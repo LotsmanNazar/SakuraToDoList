@@ -1,0 +1,460 @@
+@font-face {
+  font-family: 'PTSans';
+  src: url(../fonts/PTSans-Regular.ttf);
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PTSans';
+  src: url(../fonts/PTSans-Bold.ttf);
+  font-weight: bold;
+  font-display: swap;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'PTSans';
+	font-size: 16px;
+	line-height: 1.4;
+	color: #ffffff;
+	background-color: #000000;
+	padding: 0;
+	margin: 0;
+}
+
+input,
+textarea {
+	font-family: 'PTSans';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 20px 0;
+}
+
+p {
+	margin: 0 0 20px 0;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	cursor: pointer;
+}
+
+label {
+	cursor: pointer;
+}
+
+/* Layout */
+	.container {
+		position: relative;
+		max-width: 1100px;
+		padding: 0 15px;
+		margin: auto;
+	}
+
+	.row {
+		margin: 0 -15px;
+	}
+
+	.col {
+		padding: 0 15px;
+	}
+
+	.button {
+		color: #ffffff;
+		background-color: transparent;
+		display: flex;
+    align-items: center;
+		padding: 0;
+		margin: 0;
+		border: none;
+		transition: 0.5s;
+		cursor: pointer;
+	}
+
+	.button span {
+		margin-left: 10px;
+	}
+
+	.button svg {
+		width: 15px;
+		height: 15px;
+	}
+
+	.button svg path {
+		fill: #ffffff;
+	}
+
+	.button-accent {
+		background-color: #0899ad;
+		padding: 8px 20px;
+		border-radius: 20px;
+	}
+
+	.site-main {
+		padding: 100px 0;
+	}
+
+	.main-site-wrapper:before {
+		content: '';
+		background-image: url('../imgs/img.jpg');
+		background-size: cover;
+		background-position-x: center;
+		background-position-y: 10%;
+		position: fixed;
+		top: -25px;
+		left: -25px;
+		opacity: 0.8;
+		width: calc(100% + 50px);
+		height: calc(100% + 50px);
+		transition: 1s;
+	}
+
+/* App Loader */
+	.app-sakura-todolist-loaded .main-site-wrapper:before {
+		filter: blur(7px);
+	}
+
+	.app-loader-wrapper {
+		background-color: rgba(0,0,0,0.3);
+		display: flex;
+    align-items: center;
+    justify-content: center;
+		position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+	}
+
+	.app-loader-content {
+		text-align: center;
+		min-width: 250px;
+	}
+
+	.app-loader {
+		background-color: #acacac;
+		display: block;
+		position: relative;
+		max-width: 300px;
+		width: 100%;
+		height: 3px;
+		margin: auto;
+	}
+
+	.app-loader-progress {
+		background-color: #ffffff;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 100%;
+	}
+
+	.app-name {
+		font-size: 30px;
+	}
+
+/* Popups */
+	.app-overflow-hidden {
+		overflow: hidden;
+	}
+
+	.app-popup-wrapper {
+		background-color: rgba(0,0,0,0.7);
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 9;
+		overflow: auto;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		padding: 20px;
+	}
+
+	.app-popup {
+		background-color: #424046;
+		max-width: 500px;
+		width: 100%;
+		padding: 25px;
+		border-radius: 20px;
+	}
+
+	.app-popup-title {
+		padding-right: 10px;
+		margin-bottom: 0;
+	}
+
+	.app-popup-header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		margin-bottom: 15px;
+	}
+
+	.app-setting-field label,
+	.app-setting-field label span {
+		display: block;
+	}
+
+	.app-setting-field input:not([type="checkbox"]):not([type="radio"]),
+	.app-setting-field textarea {
+		color: #ffffff;
+		background-color: transparent;
+		min-width: 100%;
+		max-width: 100%;
+		width: 100%;
+		padding: 8px 15px;
+		border: 1px solid #bbbbbb;
+	}
+
+	.app-setting-label {
+		margin-bottom: 5px;
+	}
+
+	.app-setting-field:not(:last-child) {
+		margin-bottom: 15px;
+	}
+
+	.app-setting-field[data-type="checkbox"],
+	.app-setting-field[data-type="checkbox"] label {
+		display: flex;
+		align-items: center;
+	}
+
+	.app-setting-field[data-type="checkbox"] .app-setting-label {
+		margin-bottom: 0;
+		margin-left: 5px;
+	}
+
+	.app-popup-body {
+		margin-bottom: 20px;
+	}
+
+	.app-popup-control:not(:last-child) {
+		margin-right: 15px;
+	}
+
+	.app-close svg {
+		width: 20px;
+    height: 20px;
+	}
+
+/* App */
+	.app-controls {
+		list-style: none;
+		display: flex;
+		align-items: center;
+		padding: 0;
+		margin: 0;
+	}
+
+	.app-control:not(:last-child) {
+		margin-right: 15px;
+	}
+
+	.app-remove-control {
+		color: #ff6474;
+	}
+
+	.app-remove-control svg path {
+		fill: #ff6474;
+	}
+
+	.app-main-controls {
+		justify-content: flex-end;
+	}
+
+	.app-sort-control .active {
+		border-bottom: 2px solid;
+	}
+
+	.app-controls-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.app-sort-controls .app-control:not(:last-child) {
+		margin-right: 30px;
+	}
+
+	.app-header {
+		margin-bottom: 30px;
+	}
+
+	.app-content {
+		margin-bottom: 30px;
+	}
+
+	.app-footer .app-main-controls {
+		display: none;
+		justify-content: center;
+	}
+
+/* App CheckLists */
+	.app-cl-title {
+		font-size: 20px;
+		margin-bottom: 0;
+	}
+
+	.app-cl-controls {
+		justify-content: flex-end;
+		margin-bottom: 15px;
+	}
+
+	.app-cl-title-wrapper .app-edit-control {
+		margin-left: 10px;
+	}
+
+	.app-cl-header {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: row-reverse;
+		margin-bottom: 25px;
+	}
+
+	.app-cl-title-wrapper {
+		width: 100%;
+		padding-right: 20px;
+	}
+
+	.app-check-list {
+		background-color: rgba(0,0,0,0.7);
+		padding: 30px 30px 37px 30px;
+		margin-bottom: 30px;
+		border-radius: 20px;
+	}
+
+	.app-check-list:last-child {
+		margin-bottom: 0;
+	}
+
+/* App Tasks */
+	.app-task-controls {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.app-task-title {
+		font-size: 16px;
+		margin-bottom: 5px;
+	}
+
+	.app-task-description {
+		margin-bottom: 15px;
+	}
+
+	.app-task-content {
+		padding-bottom: 12px;
+		margin-bottom: 15px;
+		border-bottom: 2px dashed #5d5c5e;
+	}
+
+	.app-task-content-wrapper {
+		position: relative;
+		padding: 25px;
+		margin-bottom: 30px;
+		border: 2px dashed #5d5c5e;
+		border-radius: 10px;
+		transition: 0.5s;
+	}
+
+	.app-task[data-status="1"] .app-task-content-wrapper,
+	.app-task[data-status="1"] .app-task-content {
+		border-color: #63dcec;
+	}
+
+	.app-task-content-wrapper:hover {
+		background-color: rgba(0,0,0,0.4);
+	}
+
+	.app-task-check-wrapper,
+	.app-task-check-wrapper label {
+		display: flex;
+		align-items: center;
+		margin: 0;
+	}
+
+	.app-task-check {
+		accent-color: #0899ad;
+		display: block;
+		margin: 0;
+	}
+
+	.app-status-label {
+		margin-left: 10px;
+	}
+
+@media (max-width: 992px) {
+	.site-main {
+		padding: 50px 0;
+	}
+}
+
+@media (max-width: 768px) {
+	.app-check-list {
+		padding: 20px 15px;
+	}
+
+	.app-popup {
+		padding: 20px;
+	}
+
+	.app-cl-header {
+		display: block;
+	}
+
+	.app-cl-title-wrapper {
+		padding-right: 0;
+	}
+
+	.app-header .app-main-controls {
+		display: none;
+	}
+
+	.app-task-content-wrapper {
+		padding: 15px;
+		margin-bottom: 25px;
+	}
+
+	.app-cl-header {
+		margin-bottom: 20px;
+	}
+
+	.app-header {
+		margin-bottom: 25px;
+	}
+
+	.app-footer .app-main-controls {
+		display: flex;
+	}
+
+	.app-name {
+		font-size: 18px;
+	}
+
+	.app-controls-wrapper {
+		justify-content: center;
+	}
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<title>Sakura - планировщик задач</title>
+</head>
+<body>
+	<div class="main-site-wrapper">
+		<div class="site-wrapper">
+			<header class="site-header">
+
+			</header>
+
+			<main class="site-main">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="sakura-to-do-list"></div>
+						</div>
+					</div>
+				</div>
+			</main>
+
+			<footer class="site-footer">
+
+			</footer>
+		</div>
+	</div>
+
+	<script src="app/Controllers/Controller.js"></script>
+	<script src="app/Controllers/ErrorsHandler.js"></script>
+	<script src="app/Views/Templates.js"></script>
+	<script src="app/Views/View.js"></script>
+
+	<script src="app/Abstract/AbstractModel.js"></script>
+	<script src="app/Models/CheckListModel.js"></script>
+	<script src="app/Models/TaskModel.js"></script>
+
+	<script src="app/Abstract/AbstractModelsManager.js"></script>
+	<script src="app/ModelsManagers/CheckListsManager.js"></script>
+	<script src="app/ModelsManagers/TasksManager.js"></script>
+	<script src="app/ModelsManagers/RelationshipCheckListToTask.js"></script>
+	<script src="app/ModelsManagers/RelationshipTaskToCheckList.js"></script>
+
+	<script src="app/EventsRegistrators/BrowserEventsRegistrator.js"></script>
+	<script src="app/EventsRegistrators/AppEventsRegistrator.js"></script>
+
+	<script src="app/Abstract/AbstractDatabase.js"></script>
+	<script src="app/Databases/IndexedDB.js"></script>
+
+	<script src="app/Helpers/ServiceLocator.js"></script>
+	<script src="app/Helpers/Helper.js"></script>
+
+	<script src="app/SakuraToDoList.js"></script>
+
+	<script>
+		window.addEventListener('load', function() {
+			let wrapper = document.querySelector('.sakura-to-do-list');
+			let sakuraToDoList = new SakuraToDoList(wrapper);
+			sakuraToDoList.init();
+		});
+	</script>
+</body>
+</html>
